@@ -5,7 +5,7 @@
 - **Kapsam:** Bu rapor, aynı günün içinde üç ayrı alt görevle üretilen raporun bulgularını tek Türkçe belge halinde konsolide eder:
   1. **Teknik site analizi** (#261, agent-3) → `research/aydinozturk.com/site-technical.md`
   2. **İçerik ve SEO analizi** (#262, agent-4) → `research/aydinozturk.com/site-content-seo.md`
-  3. **Alan adı geçmişi ve çevrimiçi varlık** (#263, agent-5) → `research/aydinozturk.com/domain-history.md` (main'de henüz merge edilmedi; `origin/ar/research-v1/t263-domain-history` branch'inden okunmuştur)
+  3. **Alan adı geçmişi ve çevrimiçi varlık** (#263, agent-5) → `research/aydinozturk.com/domain-history.md` (main, merge 582dcd5)
 
 Alt raporlar değiştirilmemiştir; bu dosya yalnızca onları çelişkisiz biçimde özetler. Her bölümde bulguların geldiği alt rapor (ve oradaki dış kaynak) referans olarak gösterilir.
 
@@ -172,7 +172,7 @@ Kaynak: #263 (RDAP, DoH, Wayback CDX, GitHub API — erişim 2026-11-05).
 ### 8.1 Bu rapora girdi olan alt raporlar (depo içinde)
 - `research/aydinozturk.com/site-technical.md` — #261, agent-3 (main, merge 08b6053)
 - `research/aydinozturk.com/site-content-seo.md` — #262, agent-4 (main, merge d831c44)
-- `research/aydinozturk.com/domain-history.md` — #263, agent-5 (branch `ar/research-v1/t263-domain-history`, henüz main'e merge edilmedi)
+- `research/aydinozturk.com/domain-history.md` — #263, agent-5 (main, merge 582dcd5)
 
 ### 8.2 Alt raporlarda referanslı birincil kaynaklar (erişim 2026-11-05)
 1. `https://aydinozturk.com/` ve tüm 17 sitemap URL'i — `curl` (başlık/gövde/boyut/TTFB), HTTP/2 doğrulaması
