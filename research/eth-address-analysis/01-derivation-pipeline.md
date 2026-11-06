@@ -121,7 +121,7 @@ her bit için:
   padding byte'ı `0x01`'dir. Sonuç: **aynı girdi, tamamen farklı digest.**
 - Doğrulanmış örnekler (bu dosyanın betiğiyle):
   - `keccak256(boş) = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470`
-  - `sha3-256(boş)  = 0xa7ffc6f8bf1ed76651c14756a061d67b36339225f781064b4a706e131857c254`
+  - `sha3-256(boş)  = 0xa7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a`
   - Aynı 65 baytlık public key girdisi için (k=1, `0x04‖X‖Y`):
     `keccak256 = 0x393a75c54f3552ba0c8900297d6e99bb8abf8cc013bb0e912d0b176596fe7b88`
     vs `sha3-256 = 0x5f438d7103705fccbe07cf30522bf6fd0882e58f6feb096b41417b4f8c692c39`.
