@@ -44,7 +44,7 @@ def modinv(a, m):
 
 
 def is_on_curve(x, y):
-    """Afin noktanın y² = x³ − 7 üzerinde olup olmadığı."""
+    """Afin noktanın y² = x³ + 7 üzerinde olup olmadığı."""
     return (y * y - x * x * x - A * x - B) % P == 0
 
 
