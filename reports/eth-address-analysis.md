@@ -74,7 +74,7 @@ adres — son 20 bayt (160 bit); gösterim 0x + 40 hex
 - **A (k=1):** `P=G` → adres `0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf`. `keccak256(X‖Y)=0xc0a6c424ac7157ae408398df7e5f4552091a69125d5dfcb7b8c2659029395bdf`; 65B formun hash'i (`0x393a75c5…`) farklı → 0x04'ün girmediğinin kanıtı.
 - **B (EIP-155 demo anahtarı):** `k=0x4646…46` → adres **`0x9d8A62f656a8d1615C1294fd71e9CFb3E4855A4F`**. Üç bağımsız yol (0x04 hariç 64B girdi): `k·G` skaler çarpımı, `ecrecover` (spec'in v=37, r, s, H ile), RLP+keccak (signing hash birebir).
 
-> **⚠️ Düzeltme notu (02 §Düzeltme, §4'te de kanıtlı):** Orijinal görev tanımındaki EIP-155 adres varyantı `0x…CFb3E49559D3` **hatalıdır** (0 kaynak). Doğru adres `0x9D8A62F656A8D1615C1294FD71E9CFB3E4855A4F`'tir (84 bağımsız kaynak: breadwallet-core `testBase.c`, Nethermind). Bu rapor düzeltilmiş değeri kullanır.
+> **⚠️ Düzeltme notu (02 §Düzeltme, §4'te de kanıtlı):** Orijinal görev tanımındaki EIP-155 adres varyantı `0x…CFb3E49559D3` **hatalıdır** (0 kaynak). Doğru adres `0x9d8A62f656a8d1615C1294fd71e9CFb3E4855A4F`'tir (84 bağımsız kaynak: breadwallet-core `testBase.c`, Nethermind). Bu rapor düzeltilmiş değeri kullanır.
 
 ---
 
@@ -107,7 +107,7 @@ adres — son 20 bayt (160 bit); gösterim 0x + 40 hex
 | Vektör | Girdi | Beklenen (02 README) | Sonuç |
 |---|---|---|---|
 | **V1** | k=1 | P=G; adres `0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf` | PASS (adres + EIP-55 birebir) |
-| **V2** | k=`0x4646…46` (EIP-155) | adres `0x9D8A62F656A8D1615C1294FD71E9CFB3E4855A4F` | PASS (adres + imza verify/recover birebir) |
+| **V2** | k=`0x4646…46` (EIP-155) | adres `0x9d8A62f656a8d1615C1294fd71e9CFb3E4855A4F` | PASS (adres + imza verify/recover birebir) |
 | **V3** | 64B public key | `keccak256 ≠ sha3_256` (padding 0x01 vs 0x06) | PASS (aynı girdi, farklı digest) |
 | **V4** | 64B public key | pycryptodome digest = saf Python = aynı adres | PASS (byte-exact, pycryptodome 4.3.0) |
 
@@ -159,7 +159,7 @@ V4: çapraz kontrol — pycryptodome (Crypto.Hash.keccak)
 *(Not: üstteki blok, 02 README'sindeki birebir beklenen çıktının anahtar satırlarıdır; ara değerlerin tamamı — k, X, Y, 65B public key, keccak256(X‖Y) — README §"Beklenen çıktı"da kayıtlıdır ve çalıştırmayla eşleşir.)*
 
 **Doğrulama sırasında yakalanan 3 kaynak düzeltmesi (02 §Düzeltme):**
-1. **EIP-155 demo adresi:** görevdeki `0x…CFb3E49559D3` **hatalı** (0 kaynak); doğru `0x9D8A62F656A8D1615C1294FD71E9CFB3E4855A4F` (84 kaynak) — kendi hattımız + breadwallet/Nethermind + spec imzasının hem verify hem recover ile doğrulanmasıyla 3 yoldan teyitli.
+1. **EIP-155 demo adresi:** görevdeki `0x…CFb3E49559D3` **hatalı** (0 kaynak); doğru `0x9d8A62f656a8d1615C1294fd71e9CFb3E4855A4F` (84 kaynak) — kendi hattımız + breadwallet/Nethermind + spec imzasının hem verify hem recover ile doğrulanmasıyla 3 yoldan teyitli.
 2. **Eğri denklemi:** secp256k1 = **y² = x³ + 7** (b=+7, SECG #1104 §2.4.1). "y² = x³ − 7" yazımı bu Fp eğrisi için yanlış işaretli (recovery'yi bozar).
 3. **Adres hash girdisi 64B:** adres = `Keccak-256(X‖Y)` — 0x04 önekli 65B **değil** (geth `Keccak256(pubkey[1:])`). 65B hash'lense k=1'de yanlış adres çıkar.
 
